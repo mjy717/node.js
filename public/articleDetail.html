@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客文章详情页</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .content {
+            margin-bottom: 30px;
+        }
+
+        .comment-section {
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .comment {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #eaeaea;
+            border-radius: 5px;
+        }
+
+        .comment h4 {
+            margin: 0 0 5px 0;
+        }
+
+        .comment p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1 id="title">博客文章标题</h1>
+        <div class="content">
+            <p>这是博客文章的详细内容。您可以在这里放置任何您想要的文本、图片或其他媒体内容。
+                加入更多段落，以丰富文章的内容。这段文本可以是关于某个主题的详细讨论。
+                可以在这里添加链接 <a href="#">相关资源</a> 或其他信息。</p>
+        </div>
+
+        <div class="comment-section">
+            <h2>评论</h2>
+
+            <div class="comment">
+                <h4>用户1</h4>
+                <p>这是一条评论内容。非常喜欢这篇文章！</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    $(function () {
+        $.post('/api/article/articleDetail')
+
+    })
+</script>
+
+</html>

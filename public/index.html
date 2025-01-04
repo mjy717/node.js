@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <p class="title">博客系统</p>
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="user">
+                <a href="javascript:;" id="username">张三</a>
+                <a href="javascript:;" id="logout">退出登录</a>
+            </div>
+            <button id="addArticleBtn" class="btn">+ 发贴</button>
+            <div class="sidebar">
+                <a id="home" class="active">首页</a>
+                <a id="articles">我的文章</a>
+                <a id="favorites">我的收藏</a>
+                <a id="focuses">关注的人</a>
+                <a id="follows">我的粉丝</a>
+                <a id="about">关于我们</a>
+            </div>
+        </div>
+        <div class="center">
+            <ul class="tab-links">
+                <li class="active" id="0">最近</li>
+                <li id="1">科技</li>
+            </ul>
+        </div>
+        <div class="right"></div>
+    </div>
+    <!-- 模态框背景层 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <!-- 模态框内容 -->
+        <div class="modal-content" id="modalContent">
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+            <textarea id="articleComment" placeholder="您想对作者说什么？" class="input-field"></textarea>
+            <div class="btn-group">
+                <button id="publishBtn" class="btn">发布</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/article.js"></script>
+    <script src="js/main.js"></script>
+    <footer>
+        <p>&copy; 2024 版权所有 - 本网站内容未经许可不得转载</p>
+    </footer>
+</body>
+
+</html>

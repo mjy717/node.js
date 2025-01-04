@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单接口测试工具</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #response {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+
+        #url {
+            width: 80%;
+        }
+
+        #data {
+            width: 60%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>接口测试工具</h1>
+
+    <label for="url">请求URL:</label>
+    <input type="text" id="url" placeholder="输入请求URL">
+    <br>
+
+    <label for="method">请求方法:</label>
+    <select id="method">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+    </select>
+
+    <div>
+        <label for="data">请求数据 (JSON格式):</label>
+        <br>
+        <textarea id="data" rows="10" placeholder='{"key":"value"}'></textarea>
+    </div>
+
+
+    <button id="sendRequest">发送请求</button>
+
+    <h2>响应:</h2>
+    <div id="response"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#sendRequest').click(function () {
+                const url = $('#url').val();
+                const method = $('#method').val();
+                const data = $('#data').val();
+
+                $.ajax({
+                    url: url,
+                    method: method,
+                    contentType: 'application/json',
+                    data: method === "GET" ? undefined : data,
+                    success: function (response) {
+                        $('#response').html(JSON.stringify(response, null, 2));
+                    },
+                    error: function (xhr, status, error) {
+                        $('#response').html('错误: ' + xhr.status + ' - ' + xhr.statusText);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

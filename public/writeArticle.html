@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客页面</title>
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="blogForm">
+        <div class="form-group">
+            <label for="title">标题：</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="content">内容：</label><br>
+            <textarea id="content" name="content" rows="10" required></textarea>
+        </div>
+        <h5>分类标签</h5>
+        <div id="tags" class="form-group">
+            <label><input type="checkbox" name="tags" value="标签1"> 标签1</label><br>
+            <label><input type="checkbox" name="tags" value="标签2"> 标签2</label><br>
+        </div>
+        <button type="submit">提交</button>
+    </form>
+
+
+    <script>
+        $(document).ready(function () {
+            $.post("/api/article/tagList", function (data) {
+                console.log(data[0]);
+                $("#tags").empty();
+                data.forEach(function (tag) {
+                    $("<label><input type='checkbox' name='tags' value='" + tag.id + "'>" + tag.name + "</label>").appendTo("#tags");
+                });
+            });
+        });
+
+        $("#blogForm").submit(function (event) {
+            event.preventDefault();
+            var title = $("#title").val();
+            var content = $("#content").val();
+            var tags = [];
+            $("input[name='tags']:checked").each(function () {
+                tags.push($(this).val());
+            });
+            $.post("/api/article/create", {
+                user_id: localStorage.getItem("user_id"),
+                title: title,
+                content: content,
+                tags: tags
+            }, function (data) {
+                console.log(data);
+                alert("发布成功！");
+            });
+        });
+
+    </script>
+</body>
+
+</html>
