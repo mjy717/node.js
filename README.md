@@ -17,32 +17,3 @@
 #英语
 
 
-+-------------------+
-|      View         |
-|  +--------------+ |
-|  |  GUI Comp.   | |
-|  | (Menus,      | |
-|  | Toolbars,    | |
-|  | Tabbed Panes)| |
-|  +--------------+ |
-|    ‌:ml-citation{ref="" data="citationList"}      |
-|    |      |      |
-|    v      v      |
-+-----------+------+
-|  Controller       |
-|  +--------------+ |
-|  | Action List. | |
-|  | Event Handl. | |
-|  +--------------+ |
-|    ‌:ml-citation{ref="" data="citationList"}      |
-|    |      |      |
-|    v      v      |
-+-----------+------+
-|    Model          |
-|  +--------------+ |
-|  | Doc. Mgmt.   | |
-|  | Undo/Redo    | |
-|  | Syntax HL    | |
-|  +--------------+ |
-+-------------------+
-
